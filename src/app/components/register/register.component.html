@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+<div class="main">
+  <div class="form-holder">
+
+
+    <form>
+      <div class="register">
+        <label for="username">Full Name:</label>
+        <input type="text" #username="ngModel" required text name="username" ngModel>
+        <div *ngIf="username.invalid && (username.dirty || username.touched)">
+          <div *ngIf="username.hasError('required')">
+            <p> username is required.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="register">
+        <label for="email">Email:</label>
+        <input #email="ngModel" required email type="email" name="email" ngModel>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.hasError('required')">
+            <p> Email is required.</p>
+          </div>
+          <div *ngIf="email.hasError('email')">
+            <p> Enter valid email.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="register">
+        <label for="number">Phone Number:</label>
+        <input type="text"  required >
+      </div>
+
+      <div class="register">
+        <label for="address">Address:</label>
+        <input type="address">
+      </div>
+
+      <div class="register">
+        <label for="password">Password:</label>
+        <input type="password">
+      </div>
+
+      <div class="register">
+        <label for="password">Confirm Password:</label>
+        <input type="password">
+      </div>
+
+      <div class="register" style="display: flex; align-items: center; justify-content: center;">
+        <input class="register-button" style="transition: all 0.5s; padding: 2% 5%; color: #fefefe; font-weight: bold; background-color: rgb(66, 4, 126);" type="submit" value="Create Account">
+      </div>
+
+      <p style="font-weight: 550;">Already have an account? <span routerLink="/login" style="cursor: pointer; color: rgb(66, 4, 126);"> Login </span></p>
+    </form>
+
+  </div>
+</div>

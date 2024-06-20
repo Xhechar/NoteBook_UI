@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<div style="padding-top: 5vh;" class="sidebar">
+  <div class="profile">
+    <img src="../../../account_circle_40dp.svg" alt="notebook_image">
+    <p>Profile</p>
+  </div>
+  <div class="Favourites">
+    <img src="../../../bookmark_40dp.svg" alt="notebook_image">
+    <p>Favourites</p>
+  </div>
+  <div class="settings">
+    <img src="../../../settings_40dp.svg" alt="notebook_image">
+    <p>Settings</p>
+  </div>
+</div>
+<div class="body-content">
+  <div class="create-new" (click)="changeDisplay()">
+    <img src="../../../assignment_add_40dp.svg" alt="notebook_image">
+    <p>New NoteBook</p>
+  </div>
+  <div class="create-new-form" [style]="display">
+    <div class="form-holder">
+  
+  
+      <form>
+  
+        <div class="register">
+          <label for="email">NoteBook Title:</label>
+          <input type="email">
+        </div>
+  
+        <div class="register">
+          <label for="password">Description:</label>
+          <input type="text">
+        </div>
+
+        <div class="register">
+          <label for="password">Content:</label>
+          <textarea style="height: 80px;" name="content" id=""></textarea>
+        </div>
+  
+        <div class="register" style="display: flex; align-items: center; justify-content: center;">
+          <input class="register-button" style="transition: all 0.5s; padding: 2% 12%; color: #fefefe; font-weight: bold; background-color: rgb(66, 4, 126);" type="submit" value="create-new">
+        </div>
+      </form>
+  
+    </div>
+  </div>
+  <div class="notebooks-created">
+    <p>Create New NoteBook to Display</p>
+  </div>
+</div>
