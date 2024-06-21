@@ -22,21 +22,21 @@
     <div class="form-holder">
   
   
-      <form>
-  
+      <form #newNoteBookForm="ngForm" (ngSubmit)="createNewNotebook(newNoteBookForm.value)">
+        <div style="width: 100%; display: flex; justify-content: flex-end;"><h3 (click)="setDisplayNone()" class="x" style="color: rgb(167, 0, 0); margin-left: 94%; cursor: pointer;">X</h3></div>
         <div class="register">
-          <label for="email">NoteBook Title:</label>
-          <input type="email">
+          <label for="notebook_title">NoteBook Title:</label>
+          <input name="notebook_title" required type="text" ngModel>
         </div>
   
         <div class="register">
-          <label for="password">Description:</label>
-          <input type="text">
+          <label for="notebook_content">Content:</label>
+          <input name="notebook_content" required type="text" ngModel>
         </div>
 
         <div class="register">
-          <label for="password">Content:</label>
-          <textarea style="height: 80px;" name="content" id=""></textarea>
+          <label for="notebook_date_created">Date Created:</label>
+          <input name="notebook_date_created" required type="date" ngModel>
         </div>
   
         <div class="register" style="display: flex; align-items: center; justify-content: center;">
@@ -46,7 +46,58 @@
   
     </div>
   </div>
+  <div class="update-form" [style]="display2">
+    <div class="form-holder">
+  
+      <form #updateForm="ngForm" (ngSubmit)="displayValuesToBeUpdated(updateForm.value)">
+        <div style="width: 100%; display: flex; justify-content: flex-end;"><h3 (click)="setDisplayNone2()" class="x" style="color: rgb(167, 0, 0); margin-left: 94%; cursor: pointer;">X</h3></div>
+        <div class="register">
+          <label for="notebook_title">NoteBook Title:</label>
+          <input name="notebook_title" required type="text" ngModel>
+        </div>
+  
+        <div class="register">
+          <label for="notebook_content">Content:</label>
+          <input name="notebook_content" required type="text" ngModel>
+        </div>
+
+        <div class="register">
+          <label for="notebook_date_created">Date Created:</label>
+          <input name="notebook_date_created" required type="date" ngModel>
+        </div>
+  
+        <div class="register" style="display: flex; align-items: center; justify-content: center;">
+          <input class="register-button" style="transition: all 0.5s; padding: 2% 12%; color: #fefefe; font-weight: bold; background-color: rgb(66, 4, 126);" type="submit" value="Update Note">
+        </div>
+      </form>
+  
+    </div>
+  </div>
+  <div class="confirmation" [style]="display3">
+    <div class="form-holder">
+  
+      <form #updateForm="ngForm" (ngSubmit)="deleteNoteBook()">
+        <div style="width: 100%; display: flex; justify-content: flex-end;"><h3 (click)="setDisplayNone3()" class="x" style="color: rgb(167, 0, 0); margin-left: 94%; cursor: pointer;">X</h3></div>
+        <label for="confirmation">Are you sure you want to delete the specified item?</label>
+        <div class="register" style="width: 100%; display: flex; align-items: center; justify-content: space-between;">
+          <input class="register-button" style="transition: all 0.5s; padding: 2% 12%; color: #fefefe; font-weight: bold; background-color: rgb(0, 202, 0)" type="submit" value="Yes">
+          <input (click)="setDisplayNone3()" class="register-button" style="transition: all 0.5s; padding: 2% 12%; color: #fefefe; font-weight: bold; background-color: rgb(167, 0, 0);" type="button" value="No">
+        </div>
+      </form>
+  
+    </div>
+  </div>
   <div class="notebooks-created">
-    <p>Create New NoteBook to Display</p>
+    <div class="displaying-each" *ngFor="let notebook of my_notebooks let i = index">
+      <h2>{{i + 1}}. {{my_notebooks[i].notebook_title}}</h2>
+      <div>
+        <p style="color: black; margin: 10px;"><span style="text-decoration: underline; font-weight: bold; margin-right: 1%;">Content:</span> {{my_notebooks[i].notebook_content}}</p>
+        <p style="color: black; margin-left: 10px;"><span style="text-decoration: underline; font-weight: bold; margin-right: 1%;">Date Created:</span>  {{my_notebooks[i].notebook_date_created | date}}</p>
+      </div>
+      <div style="display: flex; justify-content: end; width: 100%; column-gap: 1%;">
+        <button (click)="changeDisplay2(my_notebooks[i].notebook_id, my_notebooks[i].notebook_title, my_notebooks[i].notebook_content, my_notebooks[i].notebook_date_created)" style="padding: 2% 1%; background-color: #42047e; color:#fefefe; border-radius: 5px; border: none; margin-bottom: 1%; cursor: pointer;">Update Note</button>
+        <button (click)="changeDisplay3(my_notebooks[i].notebook_id)" style="padding: 2% 1%; background-color: rgb(194, 12, 12); color:#fefefe; border-radius: 5px; border: none; margin-bottom: 1%; cursor: pointer;">Delete Note</button>
+      </div>
+    </div>
   </div>
 </div>

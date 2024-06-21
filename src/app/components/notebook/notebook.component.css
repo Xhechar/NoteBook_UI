@@ -52,7 +52,7 @@
 }
 
 
-.create-new-form {
+.create-new-form, .update-form, .confirmation {
   position: fixed;
   top: 0;
   left: 0;
@@ -116,12 +116,26 @@ form > div {
   background-color: lightblue;
   margin-top: 2%;
   width: 98%;
-  height: 60vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
   border-left: 2px dotted #07f49e;
   border-bottom: 1px solid #07f49e;
   color: #42047e;
   background-color: rgba(7, 244, 158, 0.2);
+}
+
+.displaying-each {
+  width: 90%;
+  margin: 1%;
+  background-color: rgba(88, 20, 155, 0.3);
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  align-items: start;
+  justify-content: space-between;
+  border-bottom: 1px solid #42047e;
+  padding: 10px;
+  border-radius: 10px;
 }
